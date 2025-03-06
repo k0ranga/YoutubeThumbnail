@@ -1,7 +1,0 @@
-ER=thumbnail_user
-DB_HOST=localhost
-DB_NAME=thumbnail_db
-DB_PASSWORD=password
-DB_PORT=5432
-PORT=5000
-

@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const pool = require("./models/db");
-const thumbnailRoutes = require("./routes/thumbnails");
+const faceRoutes = require("./routes/faces");
 
 /*
 const pool = new Pool({
@@ -20,9 +20,9 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
-app.use("/api/thumbnails", thumbnailRoutes);
+app.use("/api/profiles", faceRoutes);
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`🚀 Server running on http://localhost:${port}`);
   });
 
