@@ -33,10 +33,8 @@ const pool  = require("../models/db");
 
   router.get("/", async (req, res) => {
     try {
-        const { page = 1, limit = 10 } = req.query;
-        const offset = (page - 1) * limit;
-        const queryText = "SELECT * FROM faces ORDER BY id DESC LIMIT $1 OFFSET $2";
-        const result = await pool.query(queryText, [limit, offset]);
+        const queryText = "SELECT * FROM faces ORDER BY id DESC";
+        const result = await pool.query(queryText);
         res.status(200).json(result.rows);
         } catch (error) {
           console.error("Error fetching faces:", error);
@@ -121,7 +119,7 @@ const pool  = require("../models/db");
    router.get("/leaderboard", async (req, res) => {
     try {
         const result = await pool.query(
-            "SELECT * FROM faces ORDER BY votes DESC LIMIT 10"
+            "SELECT * FROM faces ORDER BY rating DESC LIMIT 10"
          );
          res.status(200).json(result.rows);
          } catch (error) {

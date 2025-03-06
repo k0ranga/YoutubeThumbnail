@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Leader from './leadboard.js'
 
 function App() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPair, setCurrentPair] = useState([]);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   const fetchProfiles = async() => {
     try{
@@ -104,6 +106,16 @@ function App() {
            >
            skip & compare New Pair
            </button>
+           <div style={{ marginTip: '40px'}}>
+            <button onClick={() => setShowLeaderboard(!showLeaderboard)}>
+                {showLeaderboard ? 'hide leaderboard' : 'show leaderboard'}
+            </button>
+            {showLeaderboard && (
+                <div style={{marginTop: '20px' }}>
+                    <Leader/>
+                </div>
+            )}
+            </div>
            </div>
     );
 }
